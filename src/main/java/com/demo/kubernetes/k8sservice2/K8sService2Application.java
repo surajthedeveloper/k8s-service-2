@@ -15,16 +15,16 @@ public class K8sService2Application {
     @Autowired
     private K8SService1API service1;
 
-    @Value("${APPLICATION_NAME:}")
-    private String applicationName;
+    @Value("${HOSTNAME:}")
+    private String hostname;
 
     public static void main(String[] args) {
         SpringApplication.run(K8sService2Application.class, args);
     }
 
-    @GetMapping("/hello-world-from-service-1")
+    @GetMapping("/hello-world")
     public String getHelloWorldFromService1() {
-        return applicationName + " ::: " + service1.helloWorld();
+        return "Service 1 = " + service1.hostname() + " <===> " + "Service 2 = " + hostname;
     }
 
 }
